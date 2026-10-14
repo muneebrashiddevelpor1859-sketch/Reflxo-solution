@@ -1,0 +1,54 @@
+/* Reflexo chat widget - modern light UI, single accent (#4a35f0) */
+.rc { position: fixed; right: 1.25rem; bottom: 1.25rem; z-index: 300; display: flex; flex-direction: column; align-items: flex-end; gap: 0.9rem; }
+
+/* launcher */
+.rc-fab { position: relative; display: flex; align-items: center; gap: 0.65rem; height: 58px; padding: 0 1.4rem 0 1.1rem; border-radius: 999px; background: #4a35f0; color: #fff; font-size: 0.9rem; font-weight: 600; box-shadow: 0 18px 40px -12px rgba(74, 53, 240, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.28); }
+.rc-fab::before { content: ''; position: absolute; inset: 0; border-radius: 999px; border: 2px solid #4a35f0; animation: rc-ring 2.6s ease-out infinite; pointer-events: none; }
+.rc-fab-ico { display: grid; place-items: center; width: 34px; height: 34px; border-radius: 50%; background: rgba(255, 255, 255, 0.18); }
+@keyframes rc-ring { from { transform: scale(1); opacity: 0.6; } to { transform: scale(1.35, 1.6); opacity: 0; } }
+@media (max-width: 640px) { .rc-fab { width: 58px; padding: 0; justify-content: center; } .rc-fab-label { display: none; } }
+
+/* panel */
+.rc-panel { width: min(400px, calc(100vw - 2.5rem)); height: min(620px, calc(100vh - 8.5rem)); display: flex; flex-direction: column; overflow: hidden; background: #fff; color: #0a0b12; border: 1px solid rgba(74, 53, 240, 0.14); border-radius: 28px; box-shadow: 0 50px 100px -30px rgba(40, 24, 150, 0.5), 0 12px 30px -16px rgba(10, 11, 18, 0.25); transform-origin: 100% 100%; }
+@media (max-width: 520px) { .rc { right: 0.75rem; bottom: 0.75rem; } .rc-panel { width: calc(100vw - 1.5rem); height: calc(100svh - 6.5rem); border-radius: 24px; } }
+
+/* header */
+.rc-head { display: flex; align-items: center; gap: 0.85rem; padding: 1.1rem 1.1rem 1.1rem 1.25rem; background: linear-gradient(180deg, #efecff, #fff); border-bottom: 1px solid rgba(74, 53, 240, 0.1); }
+.rc-avatar { position: relative; flex: none; display: grid; place-items: center; width: 46px; height: 46px; border-radius: 15px; background: #4a35f0; color: #fff; font-family: var(--display, inherit); font-weight: 700; font-size: 1.15rem; box-shadow: 0 12px 24px -10px rgba(74, 53, 240, 0.8); }
+.rc-online { position: absolute; right: -4px; bottom: -4px; width: 13px; height: 13px; border-radius: 50%; background: #fff; border: 3px solid #4a35f0; box-shadow: 0 0 0 3px #fff; animation: rc-pulse 2s infinite; }
+@keyframes rc-pulse { 50% { opacity: 0.45; } }
+.rc-title { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 0.1rem; }
+.rc-title strong { font-family: var(--display, inherit); font-size: 1.02rem; font-weight: 700; letter-spacing: -0.01em; }
+.rc-title span { font-size: 0.74rem; color: #6b6f85; }
+.rc-actions { display: flex; align-items: center; gap: 0.4rem; }
+.rc-pill { padding: 0.42rem 0.85rem; border-radius: 999px; background: #fff; border: 1px solid rgba(74, 53, 240, 0.22); color: #4a35f0; font-size: 0.76rem; font-weight: 600; transition: background 0.3s, color 0.3s; }
+.rc-pill:hover { background: #4a35f0; color: #fff; }
+.rc-icon { display: grid; place-items: center; width: 34px; height: 34px; border-radius: 50%; background: #fff; border: 1px solid rgba(74, 53, 240, 0.22); color: #4a35f0; transition: background 0.3s, color 0.3s, transform 0.4s cubic-bezier(0.22, 1, 0.36, 1); }
+.rc-icon:hover { background: #4a35f0; color: #fff; transform: rotate(90deg); }
+
+/* messages */
+.rc-body { flex: 1; overflow-y: auto; overscroll-behavior: contain; display: flex; flex-direction: column; gap: 0.7rem; padding: 1.2rem; background: #f7f7ff url(/images/bg/dots.svg); scrollbar-width: thin; scrollbar-color: rgba(74, 53, 240, 0.3) transparent; }
+.rc-msg { max-width: 82%; padding: 0.72rem 1rem; border-radius: 18px; font-size: 0.88rem; line-height: 1.5; overflow-wrap: anywhere; animation: rc-pop 0.4s cubic-bezier(0.22, 1, 0.36, 1); }
+@keyframes rc-pop { from { opacity: 0; transform: translateY(8px) scale(0.97); } }
+.rc-bot { align-self: flex-start; background: #fff; border: 1px solid rgba(74, 53, 240, 0.08); border-bottom-left-radius: 6px; box-shadow: 0 8px 20px -14px rgba(40, 24, 150, 0.45); }
+.rc-me { align-self: flex-end; background: #4a35f0; color: #fff; border-bottom-right-radius: 6px; box-shadow: 0 10px 22px -12px rgba(74, 53, 240, 0.8); }
+.rc-error { background: #fff0f0; color: #b3202b; border-color: transparent; }
+.rc-typing { display: flex; gap: 5px; padding: 0.9rem 1.05rem; }
+.rc-typing i { width: 7px; height: 7px; border-radius: 50%; background: #8f7dff; animation: rc-blink 1.2s infinite; }
+.rc-typing i:nth-child(2) { animation-delay: 0.2s; }
+.rc-typing i:nth-child(3) { animation-delay: 0.4s; }
+@keyframes rc-blink { 50% { opacity: 0.3; transform: translateY(-3px); } }
+
+/* forms */
+.rc-intro, .rc-input { background: #fff; border-top: 1px solid rgba(74, 53, 240, 0.1); }
+.rc-intro { display: flex; flex-direction: column; gap: 0.65rem; padding: 1.1rem 1.2rem 1.3rem; }
+.rc-intro input, .rc-input input { width: 100%; height: 48px; padding: 0 1.1rem; border: 1.5px solid transparent; border-radius: 14px; background: #f4f4fc; color: #0a0b12; font-size: 0.88rem; outline: none; transition: border-color 0.3s, background 0.3s, box-shadow 0.3s; }
+.rc-intro input:focus, .rc-input input:focus { border-color: #4a35f0; background: #fff; box-shadow: 0 0 0 4px rgba(74, 53, 240, 0.12); }
+.rc-err { color: #d12e3a; font-size: 0.78rem; }
+.rc-start { display: flex; align-items: center; justify-content: center; gap: 0.5rem; height: 50px; border-radius: 14px; background: #4a35f0; color: #fff; font-size: 0.92rem; font-weight: 600; box-shadow: 0 14px 28px -14px rgba(74, 53, 240, 0.8); transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s; }
+.rc-start:hover { transform: translateY(-2px); box-shadow: 0 18px 34px -14px rgba(74, 53, 240, 0.9); }
+.rc-input { display: flex; gap: 0.55rem; padding: 0.85rem; }
+.rc-input input { flex: 1; border-radius: 999px; }
+.rc-send { flex: none; display: grid; place-items: center; width: 48px; height: 48px; border-radius: 50%; background: #4a35f0; color: #fff; box-shadow: 0 12px 24px -12px rgba(74, 53, 240, 0.85); transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.3s; }
+.rc-send:hover { transform: scale(1.08) rotate(-8deg); }
+.rc-send:disabled { opacity: 0.35; box-shadow: none; transform: none; }
