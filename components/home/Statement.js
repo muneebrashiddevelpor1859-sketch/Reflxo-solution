@@ -47,6 +47,19 @@ function HoverImage({ item }) {
 export default function Statement() {
   return (
     <section className="section statement">
+      <div className="statement-background" aria-hidden="true">
+        <video
+          className="statement-background-video"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+        >
+          <source src="/videos/ed.mp4" type="video/mp4" />
+        </video>
+        <div className="statement-background-overlay" />
+      </div>
       <div className="container">
         <div className="statement-copy">
           <p className="kicker">01 / A little about our approach</p>

@@ -10,6 +10,7 @@ export default function PortfolioPage() {
   return (
     <>
       <PageHero
+        className="portfolio-page-hero"
         kicker="Portfolio"
         lines={['Work that earns', 'its place.']}
         italicLines={[1]}

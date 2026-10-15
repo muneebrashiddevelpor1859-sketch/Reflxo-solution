@@ -15,6 +15,12 @@ export default function ProjectCard({ project, tall = false }) {
       <Link href={`/portfolio/${project.slug}`} className={`pcard ${tall ? 'is-tall' : ''}`} data-cursor-label="View">
         <div className="pcard-media">
           <Cover title={project.title} hue={project.hue} image={project.image} />
+          <span className="pcard-year">{project.year}</span>
+          <span className="pcard-open" aria-hidden="true">
+            <svg viewBox="0 0 20 20" fill="none">
+              <path d="M4.5 15.5 15 5M6 5h9v9" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </span>
         </div>
         <div className="pcard-meta">
           <h3>{project.title}</h3>

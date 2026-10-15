@@ -9,16 +9,13 @@ import { services, groups } from '@/data/services';
 export default function Header() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
-  const [hidden, setHidden] = useState(false);
   const [solid, setSolid] = useState(false);
   const [drop, setDrop] = useState(false);
   const [sub, setSub] = useState(false);
   const { scrollY } = useScroll();
 
   useMotionValueEvent(scrollY, 'change', (y) => {
-    const prev = scrollY.getPrevious() ?? 0;
     setSolid(y > 40);
-    setHidden(y > prev && y > 220 && !open);
   });
 
   useEffect(() => {
@@ -38,8 +35,6 @@ export default function Header() {
     <>
       <motion.header
         className={`header ${showSolid ? 'is-solid' : ''}`}
-        animate={{ y: hidden ? '-110%' : '0%' }}
-        transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
       >
         <div className="header-inner">
           <Link href="/" className="logo" aria-label={`${site.name} home`}>
